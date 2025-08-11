@@ -3,23 +3,11 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 
 function App() {
-  const [pokemon, setPokemon] = useState(null);
+
   const [pokemen, setPokemen] = useState([]);
   const [pokeImages, setPokeImages] = useState([]);
 
-  useEffect(() => {
-    const getPokemon = async () => {
-      try {
-        const response = await axios.get(
-          "https://pokeapi.co/api/v2/pokemon/ditto"
-        );
-        setPokemon(response);
-      } catch (error) {
-        console.error(error);
-      }
-    };
-    getPokemon();
-  }, []);
+
 
   useEffect(() => {
     const getPokemen = async () => {
@@ -68,7 +56,7 @@ function App() {
   return (
     <div className="App">
       <h3>PokeAPI practice</h3>
-      <img src={pokemon?.data.sprites.front_shiny} />
+    
       <ul>
         {pokemen?.data?.results.map((pokemon) => (
           <li key={pokemon.name}>
