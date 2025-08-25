@@ -60,7 +60,7 @@ function App() {
       <ul>
         {pokemen?.data?.results.map((pokemon) => (
           <li key={pokemon.name}>
-            name: {pokemon.name}
+            {pokemon.name}
             {pokeImages.map((poke) =>
               poke.name == pokemon.name ? (
                 <img key={poke.name} src={poke.image} alt={poke.name} />
