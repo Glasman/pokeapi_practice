@@ -3,11 +3,10 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 
 function App() {
-
   const [pokemen, setPokemen] = useState([]);
   const [pokeImages, setPokeImages] = useState([]);
 
-
+ 
 
   useEffect(() => {
     const getPokemen = async () => {
@@ -53,10 +52,14 @@ function App() {
     getPictures();
   }, []);
 
+   useEffect(() => {
+    const container = document.querySelector(".spiral-container");
+    container.scrollTo(5000, 5000);
+  }, [])
+
   return (
     <div className="App">
-      <h3>PokeAPI practice</h3>
-    
+      {/* <h3>PokeAPI practice</h3>
       <ul>
         {pokemen?.data?.results.map((pokemon) => (
           <li key={pokemon.name}>
@@ -68,7 +71,28 @@ function App() {
             )}
           </li>
         ))}
-      </ul>
+      </ul> */}
+      <h3>PokeSpiral</h3>
+      <div className="spiral-container">
+        {pokeImages.map((poke, index) => {
+          const angle = index * 0.3;
+          const radius = 10 + index * 5;
+          const centerX = 5000;
+          const centerY = 5000;
+          const x = centerX + radius * Math.cos(angle);
+          const y = centerY + radius * Math.sin(angle);
+
+          return (
+            <img
+              key={poke.name}
+              src={poke.image}
+              alt={poke.name}
+              className="spiral-item"
+              style={{ left: `${x}px`, top: `${y}px` }}
+            />
+          );
+        })}
+      </div>
     </div>
   );
 }

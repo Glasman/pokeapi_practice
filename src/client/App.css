@@ -1,0 +1,12 @@
+.spiral-container {
+  position: relative;
+  width: 10000px;
+  height: 10000px;
+  margin: 0 auto;
+  background: black;
+}
+
+.spiral-item {
+  position: absolute;
+  transform: translate(-50%, -50%);
+}
