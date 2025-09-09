@@ -40,6 +40,7 @@ function App() {
         console.log("detailedresponses: ", detailedResponses);
 
         const pokePics = detailedResponses.map((res) => ({
+          id: res.data.id,
           image: res.data.sprites.front_default,
           name: res.data.name,
         }));
